@@ -52,7 +52,7 @@ def preencher_nomes(path, nomes, output):
     salvar_arte(arte, output)
 
 if __name__ == "__main__":
-    path = "../images/input/input-test.jpg"
+    path = "../utils/images/input/input-test.jpg"
 
     nomes = [
         "Bone", "Suzi", "Nessie", "Gil", "Marcos", "Dierdre", "Perrine", "Muffin", "Patti", "Kendricks",
