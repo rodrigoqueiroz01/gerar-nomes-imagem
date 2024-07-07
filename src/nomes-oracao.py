@@ -44,7 +44,7 @@ def salvar_arte(arte, output):
 def preencher_nomes(path, nomes, output):
     arte = Image.open(path)
     largura, altura = arte.size
-    fonte = ImageFont.truetype("../fonts/Montserrat/static/Montserrat-Bold.ttf", 50)
+    fonte = ImageFont.truetype("../utils/fonts/Montserrat/static/Montserrat-Bold.ttf", 50)
     cor = (255, 255, 255)
 
     area_proibida = (0, altura - 200, largura, altura)
@@ -60,5 +60,5 @@ if __name__ == "__main__":
         "Jilly", "Almire", "Babara", "Linus", "Horatia", "Allis", "Jeana", "Axel", "Virginie", "Otes", "Tabina"
     ]
 
-    output = "../images/output/output-test.jpg"
+    output = "../utils/images/output/output-test.jpg"
     preencher_nomes(path, nomes, output)
