@@ -2,21 +2,23 @@ import random
 from PIL import Image, ImageDraw, ImageFont
 import os
 
-def is_in_prohibited_area(x, y, area):
+def esta_em_area_proibida(x, y, area):
     ax1, ay1, ax2, ay2 = area
     return ax1 <= x <= ax2 and ay1 <= y <= ay2
 
-def is_overlapping(x, y, coord_list, largura_texto, altura_texto):
-    for (x0, y0, w, h) in coord_list:
-        if not (x + largura_texto < x0 or x > x0 + w or y + altura_texto < y0 or y > y0 + h):
+def esta_sobrepondo(x, y, coord_list, largura_texto, altura_texto):
+    for (x0, y0, largura, altura) in coord_list:
+        if not (x + largura_texto < x0 or x > x0 + largura or y + altura_texto < y0 or y > y0 + altura):
             return True
+
     return False
 
 def gerar_coordenadas_aleatorias(largura, altura, area_proibida, coord_list, largura_texto, altura_texto):
     while True:
         x = random.randint(0, largura - largura_texto)
         y = random.randint(0, altura - altura_texto)
-        if not is_in_prohibited_area(x, y, area_proibida) and not is_overlapping(x, y, coord_list, largura_texto, altura_texto):
+
+        if not esta_em_area_proibida(x, y, area_proibida) and not esta_sobrepondo(x, y, coord_list, largura_texto, altura_texto):
             return x, y
 
 def desenhar_nomes(arte, nomes, fonte, cor, area_proibida):
@@ -35,6 +37,7 @@ def desenhar_nomes(arte, nomes, fonte, cor, area_proibida):
 def salvar_arte(arte, output):
     if not output.lower().endswith(('.png', '.jpg', '.jpeg')):
         output = os.path.join(output, 'output.png')
+
     arte.save(output)
     print(f"Arte com nomes de oração gerada em: {output}")
 
