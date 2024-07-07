@@ -38,7 +38,7 @@ def salvar_arte(arte, output):
     arte.save(output)
     print(f"Arte com nomes de oração gerada em: {output}")
 
-def preencher_nomes_de_oracao(path, nomes, output):
+def preencher_nomes(path, nomes, output):
     arte = Image.open(path)
     largura, altura = arte.size
     fonte = ImageFont.truetype("../fonts/Montserrat/static/Montserrat-Bold.ttf", 50)
@@ -49,7 +49,7 @@ def preencher_nomes_de_oracao(path, nomes, output):
     salvar_arte(arte, output)
 
 if __name__ == "__main__":
-    path = "../images/input/intercessao.jpg"
+    path = "../images/input/input-test.jpg"
 
     nomes = [
         "Bone", "Suzi", "Nessie", "Gil", "Marcos", "Dierdre", "Perrine", "Muffin", "Patti", "Kendricks",
@@ -57,5 +57,5 @@ if __name__ == "__main__":
         "Jilly", "Almire", "Babara", "Linus", "Horatia", "Allis", "Jeana", "Axel", "Virginie", "Otes", "Tabina"
     ]
 
-    output = "../images/output/intercessão.jpg"
-    preencher_nomes_de_oracao(path, nomes, output)
+    output = "../images/output/output-test.jpg"
+    preencher_nomes(path, nomes, output)
